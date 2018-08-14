@@ -198,18 +198,15 @@ milagro:
 	if ! [ -r ${pwd}/lib/milagro-crypto-c/lib/libamcl_core.a ]; then CC=${gcc} CFLAGS="${cflags}" AR=${ar} RANLIB=${ranlib} make -C ${pwd}/lib/milagro-crypto-c VERBOSE=1; fi
 
 milagro-osx: system:= Darwin
-milagro-osx: $(shell sed -i '' "s/project (AMCL)/project (AMCL C)/" ${pwd}/lib/milagro-crypto-c/CMakeLists.txt)
 milagro-osx: milagro
 
 milagro-posix: system:= Linux
 milagro-posix: milagro
 
 milagro-win: system := Windows
-milagro-win: $(shell sed -i 's/project (AMCL)/project (AMCL C)/' ${pwd}/lib/milagro-crypto-c/CMakeLists.txt)
 milagro-win: milagro
 
 milagro-js: system:= Javascript
-milagro-js: $(shell sed -i 's/project (AMCL)/project (AMCL C)/' ${pwd}/lib/milagro-crypto-c/CMakeLists.txt)
 milagro-js: milagro
 
 
