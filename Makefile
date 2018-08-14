@@ -128,7 +128,7 @@ linux-java: apply-patches lua53 milagro-posix lpeglabel
 	CC=${gcc} CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
 		make -C src linux-java
 
-osx: apply-patches lua53 milagro-posix lpeglabel
+osx: apply-patches lua53 milagro-osx lpeglabel
 	CC=${gcc} CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
 		make -C src osx
 
@@ -148,12 +148,12 @@ ios-lib:
 ios-armv7: ARCH := armv7
 ios-armv7: OS := iphoneos
 ios-armv7: platform := ios
-ios-armv7: apply-patches lua53 milagro-posix lpeglabel ios-lib
+ios-armv7: apply-patches lua53 milagro-osx lpeglabel ios-lib
 
 ios-arm64: ARCH := arm64
 ios-arm64: OS := iphoneos
 ios-arm64: platform := ios
-ios-arm64: apply-patches lua53 milagro-posix lpeglabel ios-lib
+ios-arm64: apply-patches lua53 milagro-osx lpeglabel ios-lib
 
 ios-sim: ARCH := x86_64
 ios-sim: OS := iphonesimulator
@@ -163,7 +163,7 @@ ios-sim: ld := $(shell xcrun --sdk iphonesimulator -f ld 2>/dev/null)
 ios-sim: ranlib := $(shell xcrun --sdk iphonesimulator -f ranlib 2>/dev/null)
 ios-sim: SDK := $(shell xcrun --sdk iphonesimulator --show-sdk-path 2>/dev/null)
 ios-sim: platform := ios
-ios-sim: apply-patches lua53 milagro-posix lpeglabel ios-lib
+ios-sim: apply-patches lua53 milagro-osx lpeglabel ios-lib
 
 ios-fat:
 	lipo -create build/zenroom-ios-x86_64.a build/zenroom-ios-arm64.a build/zenroom-ios-armv7.a -output build/zenroom-ios.a
