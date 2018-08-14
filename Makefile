@@ -285,6 +285,17 @@ shell-tests = \
 # $(call himem-tests,${test-exec})
 
 
+check-osx: test-exec-lowmem := ${pwd}/src/zenroom.command 2>/dev/null
+check-osx: test-exec := ${pwd}/src/zenroom.command 2>/dev/null
+check-osx:
+${test-exec} test/constructs.lua
+$(call lowmem-tests,${test-exec-lowmem})
+$(call crypto-tests,${test-exec-lowmem})
+$(call shell-tests,${test-exec-lowmem})
+@echo "----------------"
+@echo "All tests passed for SHARED binary build"
+@echo "----------------"
+
 check-shared: test-exec-lowmem := ${pwd}/src/zenroom-shared 2>/dev/null
 check-shared: test-exec := ${pwd}/src/zenroom-shared 2>/dev/null
 check-shared:
